@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS customers CASCADE;
+CREATE TABLE customers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name TEXT,
+  phone INT
+
+);

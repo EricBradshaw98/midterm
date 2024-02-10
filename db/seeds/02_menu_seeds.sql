@@ -1,0 +1,10 @@
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Caesar Salad', 'Crisp romaine lettuce with parmesan cheese and croutons', 'Dairy, Eggs', 5, 6.99, true, 'Appetizer');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Burger', 'Juicy beef patty with lettuce, tomato, and cheese', 'Gluten, Dairy', 10, 9.99, true, 'Entree');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Margherita Pizza', 'Classic pizza with tomato sauce, mozzarella cheese, and basil', 'Gluten, Dairy', 15, 12.99, true, 'Entree');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Chicken Alfredo', 'Creamy pasta with grilled chicken and parmesan cheese', 'Gluten, Dairy', 20, 14.99, true, 'Entree');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Garlic Bread', 'Toasted bread with garlic and butter', 'Gluten, Dairy', 5, 3.99, true, 'Appetizer');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Fish and Chips', 'Crispy battered fish with french fries', 'Gluten, Fish', 15, 11.99, true, 'Entree');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Mushroom Risotto', 'Creamy rice with mushrooms and parmesan cheese', 'Gluten, Dairy', 25, 13.99, true, 'Entree');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Spinach Dip', 'Warm spinach and artichoke dip with tortilla chips', 'Dairy', 10, 7.99, true, 'Appetizer');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Tiramisu', 'Classic Italian dessert with ladyfingers, espresso, and mascarpone cheese', 'Gluten, Dairy, Eggs', 10, 6.99, true, 'Dessert');
+INSERT INTO menu (name, description, allergens, prep_time, price, active, type) VALUES ('Lemonade', 'Refreshing lemonade with fresh lemon juice and sugar', '', 5, 2.99, true, 'Beverage');

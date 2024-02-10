@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head is where we will keep all links and references-->
+<head>
+  <title>Admin Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<!--body is where we will keep all the page content-->
+<body>
+  <!--header is where we will keep the restaurant name + menu filters-->
+  <header>
+    <!--Restaurant logo + name-->
+    <div class="restaurant logo">
+        <img src="/images/profile-hex.png"> 
+        <h2>Lighthouse Restaurant</h2>
+    </div>
+    <!-- line to seperate next div-->
+    <br>
+    <!--this is where we will store the filters, more divs may be required here base on type count-->
+    <div class="filters">
+        <h2>Filter / search </h2>
+    </div>
+  </header>
+
+  <!-- Page-specific (main) content here -->
+  <main>
+    <!--This is where all the orders will go-->
+    <section class="orders">
+      <!--There will be many articles as orders are placed-->
+      <article>
+        <!--This is where the order details will be placed-->
+        <div class="active-order">
+          <!--list depending on how PSQL works-->
+          <ol>
+            <!--Order item from longest cook time at the top? Think of it like a real life ASYNC function-->
+            <li>(quantity)(item)(prep-time)</li>
+            <li>2X Fettucini alfredo - 45m</li>
+            <li>1X Pizza - 30m</li>
+            <li>3X Ginger Ale - 0m</li>
+          </ol>
+        </div>
+        <!--This is where we will store our SMS auto message buttons-->
+        <div class= "client-communication">
+          <button class="confirmation-button" type="submit">Send Order Confirmation</button>
+          <button class="Pickup-button" type="submit">Order Ready For Pickup</button>
+        </div>
+      </article>
+    </section>
+  </main>
+  <!--I'm not sure if footer should be included in admin, but maybe we could include completed orders/history-->
+  <footer>
+    <h2>Footer</h2>
+  </footer>
+</body>
+
+</html>

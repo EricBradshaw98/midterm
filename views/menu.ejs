@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head is where we will keep all links and references-->
+<head>
+  <title>Menu Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<!--body is where we will keep all the page content-->
+<body>
+  <!--header is where we will keep the restaurant name + menu filters-->
+  <header>
+    <!--Restaurant logo + name-->
+    <div class="restaurant logo">
+        <img src="/images/profile-hex.png"> 
+        <h2>Lighthouse Restaurant</h2>
+    </div>
+    <!-- line to seperate next div-->
+    <br>
+    <!--this is where we will store the filters, more divs may be required here base on type count-->
+    <div class="filters">
+        <h2>Filter / search </h2>
+    </div>
+  </header>
+
+  <!-- Page-specific (main) content here -->
+  <main>
+    <!--This section is where the menu items will be displayed-->
+    <section class="menu">
+      <!--one article per item-->
+      <article class="menu-item">
+        <!--picture and order button will be stored on top of each other-->
+        <div class="menu-picture">
+          <img src="/images/profile-hex.png">
+          <!--button that adds +1 of item to cart. Might replace order with item price that still acts as button-->
+          <button class="order" type="submit">ORDER-$$$</button>
+        </div>
+        <!--description will be contained the right side-->
+        <div class="menu-description">
+          <h5>Pizza</h5>
+          <p>Inpired by Pi, the shape of our pizzas are circular. Classic oven baked. Contains Gluten!</p>
+        </div>
+      </article>
+
+    </section>
+    <!--cart and checkout display-->
+    <div class="cart">
+
+      <h2>CART</h2>
+      <div class="carted-items">
+        <ol>
+          <!--Order item from first added to last?-->
+          <li>(quantity)(item)(price)</li>
+          <li>2X Fettucini alfredo - $17</li>
+          <li>1X Pizza - $25 </li>
+          <li>3X Ginger Ale - $2</li>
+        </ol>
+        <h4>Order Total = $$$</h4>
+        <h6>Cost is per item</h6>
+      </div>
+      <section class="place-order">
+        <h2></h2>
+        <!--add error message, we can set this to pop up based on if statements-->
+        <div class="error-message"></div>
+        <!--add id's for targetting actions w/ jQuery-->
+        <form class="customer-details" id="customer-details">
+          <textarea class="customer-name" name="text" id="customer-name"
+            placeholder="Name is required for order"></textarea>
+          <textarea class="customer-phone-number" name="text" id="customer-phone-number"
+            placeholder="Phone number"></textarea>
+          <textarea class="customer-comment" name="text" id="customer-comment"
+            placeholder="Can you make sure my pop arrives cold?"></textarea>
+          <button class="checkout" type="submit">Checkout</button>
+        </form>
+      </section>
+    </div>
+
+    <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
+    <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
+
+  </main>
+  <!--section for customer reviews, cannot post your own-->
+  <footer>
+    <!--many reviews can be posted-->
+    <article class="reviews">
+      <!--rating in stars will be displayed-->
+      <div class="Rating">
+        <img src="/images/profile-hex.png">
+      </div>
+      <!--description will be contained the right side-->
+      <div class="review-description">
+        <h5>Very all dente</h5>
+        <p>I ordered the Fettucini Alfredo. The sauce was great but the Fettucini could have been boiled for longer. It was hard to roll it onto my spoon. The crunch was not great either</p>
+      </div>
+    </article>
+  </footer>
+</body>
+
+</html>

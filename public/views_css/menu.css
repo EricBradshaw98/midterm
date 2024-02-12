@@ -1,0 +1,110 @@
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #351b15;
+}
+
+header {
+  height: 200;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #42211b;
+  background-image: url("https://www.transparenttextures.com/patterns/dust.png");
+}
+
+.restaurant-logo {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.menu>* {
+  flex: 0 0 50%;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(192, 190, 190)
+}
+
+.menu-picture {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+
+.menu-picture img {
+
+}
+
+*/
+
+.add-to-order i:hover {
+  color: blue;
+}
+
+.menu-description {
+  display: flex;
+  flex-direction: column;
+}
+
+/* items being added to order section */
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+  height: 500px;
+  width: 300px;
+}
+
+/*
+
+.cart h2 {
+
+}
+
+*/
+
+.carted-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.place-order {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout :hover{
+  color: #0aa88e;
+}
+
+/* Still need to add everything within footer */
+
+footer {
+  background-color: blanchedalmond;
+}

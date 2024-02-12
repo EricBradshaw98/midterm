@@ -52,13 +52,13 @@ main {
   flex-direction: column;
 }
 
-/* 
+/*
 
 .menu-picture img {
 
 }
 
-*/
+/
 
 .add-to-order i:hover {
   color: blue;
@@ -69,7 +69,7 @@ main {
   flex-direction: column;
 }
 
-/* items being added to order section */
+/ items being added to order section /
 .cart {
   display: flex;
   flex-direction: column;
@@ -80,13 +80,13 @@ main {
   width: 300px;
 }
 
-/*
+/
 
 .cart h2 {
 
 }
 
-*/
+/
 
 .carted-items {
   display: flex;
@@ -103,7 +103,7 @@ main {
   color: #0aa88e;
 }
 
-/* Still need to add everything within footer */
+/ Still need to add everything within footer */
 
 footer {
   background-color: blanchedalmond;

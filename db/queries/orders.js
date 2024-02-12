@@ -5,7 +5,8 @@ const getAllOrderItems = function (limit = 10) {
   let queryString = `
     SELECT *
     FROM orders
-    LIMIT $1
+    JOIN ordered_items ON orders.id = ordered_items.order_id
+    LIMIT $1;
   `;
 
   queryParams.push(limit);

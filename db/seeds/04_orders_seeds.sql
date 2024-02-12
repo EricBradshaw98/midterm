@@ -1,4 +1,3 @@
--- Users table seeds here (Example)
 INSERT INTO orders (customer_id, order_placed, order_ready, active)
 VALUES (1, NOW(), DATE_ADD(NOW(), INTERVAL 40 MINUTE), true);
 

@@ -3,5 +3,4 @@ CREATE TABLE customers (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255),
   phone VARCHAR(255)
-
 );

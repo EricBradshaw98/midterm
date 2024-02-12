@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/admin.css" />
+  <link rel="stylesheet" href="/views_css/admin.css" />
+  <link rel="stylesheet" href="/views_css/menu.css" />
 
 
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -43,13 +44,14 @@
     <section class="orders">
       <!--There will be many articles as orders are placed-->
       <% orders_items.forEach(orders => { %>
+
       <article class="active-order">
         <!--This is where the order details will be placed-->
         <div class="order-details">
           <!--list depending on how PSQL works-->
           <ul>
             <!--Order item from longest cook time at the top? Think of it like a real life ASYNC function-->
-            <li>(quantity)(item)(prep-time)<%= ordered_items.order_id %></li>
+            <li>(quantity)(item)(prep-time)<%= orders.quantity %> <%= orders.menu_item_id %></li>
             <li><%= orders.id %></li>
             <li><%= orders.order_placed %></li>
             <li><%= orders.order_ready %></li>
@@ -62,6 +64,7 @@
         </div>
       </article>
       <% }); %>
+
 
 
   <!--I'm not sure if footer should be included in admin, but maybe we could include completed orders/history-->

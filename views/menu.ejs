@@ -11,7 +11,7 @@
 
   <!--removed all the other stylesheets-->
   <link rel="stylesheet" href="/styles/menu.css" />
-
+  <link rel="stylesheet" href="/views_css/menu.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -56,21 +56,6 @@
       <% }); %>
 
 
-      <% menu_items.forEach(menu => { %>
-        <article class="menu-item">
-          <div class="menu-picture">
-            <!-- Use the menu image URL from the database -->
-            <img src="<%= menu.image_url %>">
-            <!-- Assuming you want to display the price as a button, replace ORDER-$$$ with the actual price -->
-            <button class="add-to-order" type="submit">ORDER-$<%= menu.price %></button>
-          </div>
-          <div class="menu-description">
-            <!-- Use the menu name and description from the database -->
-            <h5><%= menu.name %></h5>
-            <p><%= menu.description %></p>
-          </div>
-        </article>
-      <% }); %>
 
 
 

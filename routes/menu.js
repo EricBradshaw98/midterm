@@ -1,21 +1,27 @@
 const express = require('express');
 const router  = express.Router();
-const database = require("../db/connection");
+const {getAllMenuItems} = require("../db/queries/menu");
 
-
-
-
-
-
+//CREATE (POST TO CREATE MENU ITEM)
+//READ ALL
 router.get("/", (req, res) => {
-  database
-    .getAllMenuItems(req.query, 20)
-    .then((menu) => res.send({ menu }))
-    .catch((e) => {
-      console.error(e);
-      res.send(e);
-    });
+  getAllMenuItems(10)
+  .then(menu_items => {
+
+    res.render("menu", { menu_items });
+  })
+  .catch(e => {
+    console.error(e);
+    res.send(e);
+  });
 });
+
+
+// READ ONE
+//UPDATE
+//DELETE
+
+
 
 
 module.exports = router;

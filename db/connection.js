@@ -14,3 +14,22 @@ const db = new Pool(dbParams);
 db.connect();
 
 module.exports = db;
+
+
+
+const getAllMenuItems = function (options, limit = 10) {
+  const queryParams = [];
+  let queryString = `
+    SELECT menu.*
+    FROM menu
+  `;
+
+  queryParams.push(limit);
+
+  return db.query(queryString, queryParams).then((res) => res.rows);
+};
+
+
+module.exports = {
+  getAllMenuItems
+};

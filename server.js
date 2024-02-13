@@ -25,6 +25,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(express.json());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -57,3 +58,9 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+ // for parsing application/json
+
+// Route for handling POST request
+

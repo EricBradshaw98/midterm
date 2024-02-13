@@ -5,6 +5,7 @@ const {getAllMenuItems} = require("../db/queries/menu");
 //CREATE (POST TO CREATE MENU ITEM)
 //READ ALL
 router.get("/", (req, res) => {
+  
   getAllMenuItems(10)
   .then(menu_items => {
 
@@ -16,12 +17,11 @@ router.get("/", (req, res) => {
   });
 });
 
-
-// READ ONE
+//CREATE
+//READ ALL
+//READ ONE
 //UPDATE
 //DELETE
-
-
 
 
 module.exports = router;

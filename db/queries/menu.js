@@ -5,6 +5,7 @@ const getAllMenuItems = function (limit = 10) {
   let queryString = `
     SELECT *
     FROM menu
+LEFT JOIN reviews ON menu.id = reviews.id
     LIMIT $1
   `;
 

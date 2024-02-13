@@ -17,10 +17,12 @@ router.get("/", (req, res) => {
 });
 
 
-router.post("/addReview", async (req, res) => {
-  const { itemId } = req.body;
+
+router.post("/submit", async (req, res) => {
+  const itemId  = req.body.reviewContent;
+  console.log(req.body, itemId)
   try{    
-    await db.query('INSERT INTO reviews (review, customer_id) VALUES (1, $1)', [itemId]);
+    await db.query('INSERT INTO reviews (review, customer_id) VALUES ($1, 4)', [itemId]);
     res.status(200).json({ message: 'Item added'});
   } catch (error) {
     console.error('error:', error);
@@ -28,11 +30,10 @@ router.post("/addReview", async (req, res) => {
   }
 })
 
+
+
 // READ ONE
 //UPDATE
 //DELETE
-
-
-
 
 module.exports = router;

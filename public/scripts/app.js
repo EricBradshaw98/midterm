@@ -14,51 +14,21 @@ $("document").ready(function() {
       showError('🛑 ⚠️ Review content cannot be empty! ⚠️ 🛑');
       return;
     }
-    const formData = $(this).serialize();
 
     $.ajax({
-    url: "http://localhost:8080/reviews",
+    url: "http://localhost:8080/reviews/submit",
     context: document.body,
-    data: formData,
+    data: {'reviewContent': reviewContent},
     method: "POST",
-    success: function(formData, textStatus, jqXHR) {
-      loadTweetsFromServer((tweets) => {
-        addNewTweetToDisplay(tweets, sanitizedText);
-      });
-      resetNewTweetBox();
+    success: function() {
+      console.log('success')
     },
     error: function(jqXHR, textStatus, errorThrown) {
-      displayError('Problem saving tweet');
+      console.log('Problem saving tweet');
     }
   });
 
   });
-  
-  // form submit handler to save new tweet to server and update display
-  // $('.new-tweet-form').on("submit", function(event) {
-  //   event.preventDefault();
-  //   hideError();
-  //   let sanitizedText = $("#tweet-text").val();
-  //   if (newTweetValidation(sanitizedText)) {
-  //     console.log('calling ajax')
-  //     $.ajax({
-  //       url: "http://localhost:8080/tweets",
-  //       context: document.body,
-  //       data: $("#tweet-text").serialize(),
-  //       method: "POST",
-  //       success: function(data, textStatus, jqXHR) {
-  //         loadTweetsFromServer((tweets) => {
-  //           addNewTweetToDisplay(tweets, sanitizedText);
-  //         });
-  //         resetNewTweetBox();
-  //       },
-  //       error: function(jqXHR, textStatus, errorThrown) {
-  //         displayError('Problem saving tweet');
-  //       }
-  //     });
-  //   } else {
-  //     console.log('not calling ajax')
-  //   }
-  // });
+
   console.log('document ready done')
 });

@@ -39,13 +39,13 @@
     <!--This section is where the menu items will be displayed-->
     <section class="menu">
       <!--one article per item-->
-      <% review_items.forEach(reviews => { %>
+      <% review_items.forEach(review => { %>
         <article class="review-item">
           
           <div class="menu-description">
             <!-- Use the menu name and description from the database -->
-            <h5><%= reviews.customer_id %></h5>
-            <p><%= reviews.review %></p>
+            <h5><%= review.customer_id %></h5>
+            <p><%= review.review %></p>
           </div>
         </article>
       <% }); %>

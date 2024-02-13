@@ -45,7 +45,7 @@
             <!-- Use the menu image URL from the database -->
             <img src="<%= menu.image_url %>">
             <!-- Assuming you want to display the price as a button, replace ORDER-$$$ with the actual price -->
-            <button class="add-to-order" type="submit">ORDER-$<%= menu.price %></button>
+            <button class="add-to-order" onclick = "addToOrder(<%= JSON.stringify(menu) %>)">ORDER-$<%= menu.price %></button>
           </div>
           <div class="menu-description">
             <!-- Use the menu name and description from the database -->
@@ -54,10 +54,6 @@
           </div>
         </article>
       <% }); %>
-
-
-
-
 
     </section>
     <!--cart and checkout display-->
@@ -93,7 +89,7 @@
     </div>
 
     <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
-    <form class = "leave_review" method="post" action = "/reviews/reviews">
+    <form class = "leave_review" method="post" action = "/reviews/submit">
       <textarea name = "review-text" class = "review-text" id ="review-text" placeholder="Leave a review!"></textarea>
       <button type="submit" id = "review-submit">Submit</button>
     </form>

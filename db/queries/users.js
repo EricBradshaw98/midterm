@@ -7,6 +7,19 @@ const getUsers = () => {
     });
 };
 
+const getAllFoodItems = () => {
+  const queryString = `
+  SELECT id, name, description, price
+  FROM menu;`;
+  return db.query(queryString)
+  .then((data) => {
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+}
+
 //getAllMenuItems other query
 //getorders other query
 //getsubtotal other query
@@ -21,7 +34,7 @@ const getSubtotal = (orderID) => {
 }
 
 //clear cart
-const clearCart = (orderID) => {
+const cancelCartOrder = (orderID) => {
   const queryString = `
   DELETE FROM orders
   WHERE id = $1
@@ -37,7 +50,7 @@ const clearCart = (orderID) => {
   })
 }
 
-//order history all
+//order history all check
 const getOrders = (orderID) => {
   const queryString = `
   SELECT menu.name, menu.price as price, photo_url, description, ordered_items.quantity, ordered_items.id as ordered_itemsID, orders.order_placed
@@ -58,7 +71,7 @@ const getOrders = (orderID) => {
 
 
 //CHeckout order
-const checkoutOrder = (orderID) => {
+const submitOrder = (orderID) => {
   const queryString =`
   UPDATE orders
   SET order_placed = CURRENT_TIMESTAMP AT TIME ZONE 'ET', active = true
@@ -78,7 +91,7 @@ return db.query(queryString, [orderID])
 }
 
 //remove a menu item
-const deleteMenuItem = (menuItemName, orderID) => {
+const removeFoodItem = (menuItemName, orderID) => {
   const queryString =`
   DELETE FROM ordered_items
   USING menu, orders
@@ -116,7 +129,7 @@ const updateQuantity = (newQuantity, orderContentID) => {
 
 //find users phone
 
-const getPhoneNum = () => {
+const getOwnerPhone = () => {
   const queryString = `
   SELECT phone
   FROM customers
@@ -133,7 +146,7 @@ const getPhoneNum = () => {
 };
 
 //get the ordered items in cart
-const cart = (userID) => {
+const getCart = (userID) => {
   const queryOrder = `
   SELECT *
   FROM orders
@@ -156,7 +169,7 @@ const cart = (userID) => {
 
 //specific menu item from specfic ordereditem cart
 
-const cartSearch = (orderID, menuItemID) => {
+const searchCart = (orderID, menuItemID) => {
   const cartQuery= `
   SELECT *
   FROM ordered_items
@@ -175,7 +188,7 @@ const cartSearch = (orderID, menuItemID) => {
 
 //add to ordered items specific menu item, quantity and order
 
-const addCart = (orderID, menuItemID, quantity) => {
+const addToCart = (orderID, menuItemID, quantity) => {
   const addToCart = `
   INSERT INTO ordered_items (order_id, menu_item_id, quantity) VALUES ($1, $2, $3)
   `;
@@ -220,7 +233,7 @@ const queryAllOrders = (userID) => {
   })
 }
 //query to get the admin orders
-const adminOrders = () => {
+const getOrdersAdmin = () => {
   const queryString = `
   SELECT
   orders.id, orders.order_placed, orders.active, orders.order_ready,
@@ -239,7 +252,7 @@ const adminOrders = () => {
   })
 }
 
-const updateOrderQuery = (orderID) => {
+const updateOrdersQuery = (orderID) => {
   const queryString = `UPDATE orders SET active = 'false' WHERE id = $1`
 
   return db.query(queryString,[orderID])
@@ -248,7 +261,7 @@ const updateOrderQuery = (orderID) => {
   })
 }
 
-const userPhone = (orderID) => {
+const getUserPhone = (orderID) => {
   const userquery = `SELECT customers.phone FROM customer JOIN orders ON orders.customer_id = customers.id WHERE orders.id = $1`;
 
   return db.query(queryString,[orderID])
@@ -257,7 +270,7 @@ const userPhone = (orderID) => {
   })
 }
 
-const orderContentsQuery = (orderID) => {
+const orderItemContentsQuery = (orderID) => {
   const itemQuery = `SELECT
   menu.name, ordered_items.quantity, menu.price AS price
   FROM ordered_items
@@ -271,7 +284,7 @@ const orderContentsQuery = (orderID) => {
 }
 //need to check this one
 
-const currentOrder = (userID) => {
+const queryCurrentOrder = (userID) => {
   const queryCurrent = `SELECT *
   FROM orders
   WHERE user_id = $1 AND order_placed IS NOT NULL AND order_ready IS NULL`;
@@ -283,7 +296,7 @@ const currentOrder = (userID) => {
 }
 
 
-const createNewOrder = (userID) => {
+const createNewOrderQuery = (userID) => {
   const queryCreate = `INSERT INTO orders (user_id) VALUES ($1)
   RETURNING *;
   `;
@@ -294,7 +307,7 @@ const createNewOrder = (userID) => {
   })
 }
 
-const queryMenuItems = () => {
+const queryAllFoodItems = () => {
   const querymenu = `SELECT id, name, description, price, photo_url
   FROM menu;
   `;
@@ -305,4 +318,5 @@ const queryMenuItems = () => {
 
 
 
-module.exports = { getUsers, queryMenuItems, createNewOrder, currentOrder,orderContentsQuery, cart, userPhone, updateOrderQuery, adminOrders, updateQuantity, deleteMenuItem, queryAllOrders, updateCart, clearCart, getPhoneNum, addCart, cartSearch, checkoutOrder,getOrders };
+module.exports = { queryAllFoodItems, createNewOrderQuery, queryCurrentOrder, orderItemContentsQuery, getUserPhone, updateOrdersQuery, getOrdersAdmin, queryAllOrders, updateCart, addToCart, searchCart, getCart, getOwnerPhone, getSubtotal, updateQuantity, removeFoodItem, submitOrder, cancelCartOrder, getOrders, getAllFoodItems, getUsers };
+//need get order history

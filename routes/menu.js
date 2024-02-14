@@ -1,34 +1,33 @@
 const express = require('express');
 const router  = express.Router();
 const {getAllMenuItems} = require("../db/queries/menu");
+const userQueries = require('../db/queries/users')
+
 
 //CREATE (POST TO CREATE MENU ITEM)
 //READ ALL
 router.get("/", (req, res) => {
-  
-  getAllMenuItems(10)
-  .then(menu_items => {
 
-    res.render("menu", { menu_items });
+  const userID = req.cookies.customer_id || 1;
+
+  userQueries.queryCurrentOrder(userID)
+  .then((data) => {
+    if (!data[0]) {
+
+      return userQueries.createNewOrderQuery(userID);
+    }
+    return data;
   })
-  .catch(e => {
-    console.error(e);
-    res.send(e);
+  .then((data) => {
+    const orderID = data[0].id;
+
+    userQueries.queryAllFoodItems()
+    .then((menuItems) => {
+      res.render('menu', { menuItems: menuItems.rows, orderID});
+    });
   });
+
 });
-
-router.post("/submit", async (req, res) => {
-  const itemId  = req.body.reviewContent;
-  console.log(req.body, itemId)
-  // try{    
-  //   await db.query('INSERT INTO reviews (review, customer_id) VALUES ($1, 4)', [itemId]);
-  //   res.status(200).json({ message: 'Item added'});
-  // } catch (error) {
-  //   console.error('error:', error);
-  //   res.status(500).json({ message: 'Error adding item' });
-  // }
-})
-
 
 //CREATE
 //READ ALL

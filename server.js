@@ -35,6 +35,7 @@ const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
 const adminRoutes = require('./routes/admin');
 const reviewsRoutes = require('./routes/reviews');
+const cartRoutes = require('./routes/cart');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -46,6 +47,7 @@ app.use('/users', usersRoutes);
 app.use('/menu', menuRoutes);
 app.use('/admin', adminRoutes);
 app.use('/reviews', reviewsRoutes);
+app.use('/cart', cartRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!

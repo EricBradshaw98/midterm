@@ -39,3 +39,17 @@ router.get('/', (req, res) => {
     res.send(err);
   })
 })
+
+//add to cart
+
+//delete an order
+
+
+//submit an order
+
+
+// remove menu item specific
+
+//adjust quantity
+
+

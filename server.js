@@ -25,6 +25,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(express.json());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -33,6 +34,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
 const adminRoutes = require('./routes/admin');
+const reviewsRoutes = require('./routes/reviews');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -43,6 +45,7 @@ app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
 app.use('/menu', menuRoutes);
 app.use('/admin', adminRoutes);
+app.use('/reviews', reviewsRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -55,3 +58,9 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+ // for parsing application/json
+
+// Route for handling POST request
+

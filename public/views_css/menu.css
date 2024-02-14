@@ -4,17 +4,17 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #351b15;
+  background-color: #ecc7bf;
 }
 
 header {
-  height: 200;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #42211b;
+  background-color: #ee6047;
   background-image: url("https://www.transparenttextures.com/patterns/dust.png");
 }
 
@@ -33,7 +33,7 @@ main {
 }
 
 .menu{
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
 }

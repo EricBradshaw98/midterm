@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head is where we will keep all links and references-->
+<head>
+  <title>Menu Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <!--removed all the other stylesheets-->
+  <link rel="stylesheet" href="/styles/menu.css" />
+  <link rel="stylesheet" href="/views_css/menu.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<!--body is where we will keep all the page content-->
+<body>
+  <!--header is where we will keep the restaurant name + menu filters-->
+  <header>
+    <!--Restaurant logo + name-->
+    <div class="restaurant logo">
+        <img src="/images/profile-hex.png">
+        <h2>Lighthouse Restaurant</h2>
+    </div>
+    <!-- line to seperate next div-->
+    <br>
+    <!--this is where we will store the filters, more divs may be required here base on type count-->
+    <div class="filters">
+        <h2>Filter / search </h2>
+    </div>
+  </header>
+
+  <!-- Page-specific (main) content here -->
+  <main>
+    <!--This section is where the menu items will be displayed-->
+    <section class="menu">
+      <!--one article per item-->
+      <% review_items.forEach(review => { %>
+        <article class="review-item">
+          
+          <div class="menu-description">
+            <!-- Use the menu name and description from the database -->
+            <h5><%= review.customer_id %></h5>
+            <p><%= review.review %></p>
+          </div>
+        </article>
+      <% }); %>
+  </main>
+
+
+
+
+  <!--section for customer reviews, cannot post your own-->
+  <footer>
+    <!--many reviews can be posted-->
+    <article class="reviews">
+      <!--rating in stars will be displayed-->
+      <div class="Rating">
+        <img src="/images/profile-hex.png">
+      </div>
+      <!--description will be contained the right side-->
+      <div class="review-description">
+        <h5>Very all dente</h5>
+        <p>I ordered the Fettucini Alfredo. The sauce was great but the Fettucini could have been boiled for longer. It was hard to roll it onto my spoon. The crunch was not great either</p>
+      </div>
+    </article>
+  </footer>
+</body>
+
+</html>

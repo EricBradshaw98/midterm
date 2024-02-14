@@ -128,6 +128,8 @@ const cart = (userID) => {
 
 }
 
+//specific menu item from specfic ordereditem cart
+
 const cartSearch = (orderID, menuItemID) => {
   const cartQuery= `
   SELECT *
@@ -145,9 +147,11 @@ const cartSearch = (orderID, menuItemID) => {
 
 };
 
+//add to ordered items specific menu item, quantity and order
+
 const addCart = (orderID, menuItemID, quantity) => {
   const addToCart = `
-  INSERT INTO ordered_items (orders_id, menu_item_id, quantity) VALUES ($1, $2, $3)
+  INSERT INTO ordered_items (order_id, menu_item_id, quantity) VALUES ($1, $2, $3)
   `;
   return db.query(addToCart, [orderID, menuItemID, quantity || 1])
   .then((data) => {
@@ -253,6 +257,25 @@ const currentOrder = (userID) => {
 }
 
 
+const createNewOrder = (userID) => {
+  const queryCreate = `INSERT INTO orders (user_id) VALUES ($1)
+  RETURNING *;
+  `;
+
+  return db.query(queryCreate, [userID])
+  .then((data) => {
+    return data.rows;
+  })
+}
+
+const queryMenuItems = () => {
+  const querymenu = `SELECT id, name, description, price, photo_url
+  FROM menu;
+  `;
+
+  return db.query(querymenu)
+
+  };
 
 
 

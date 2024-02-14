@@ -13,10 +13,10 @@ const renderCart = function () {
   cartList.empty()
   for(const item of cart) {
     cartList.append(`<li>${item.name} - $${item.price}</li>`);
-    total += (item.price * item.quantity);
+    total += (item.price);
 
   }
-  $('.cart-total').text(`Total: $${total / 100}`);
+  $('.cart-total').text(`Total: $${total}`);
 }
 
 $("document").ready(function() {

@@ -3,7 +3,7 @@
     <div class="header_left">
       <a href="/"><i class="fa-solid fa-house"></i></a>
     </div>
-    <div class="header_title">FOOD DELIVERY</div>
+    <div class="header_title">LIGHTHOUSE RESTAURANT</div>
     <div class="header_right">
       <i class="fa-solid fa-user" id="loginButton"></i>
       <i class="fa-solid fa-cart-plus"></i>
@@ -11,3 +11,12 @@
     </div>
   </nav>
 </header>
+
+<script>
+  document.getElementById('loginButton').addEventListener('click', function() {
+    const userID = prompt("Please enter your User ID:");
+    if (userID) {
+      window.location.href = `/users/login/${userID}`;
+    }
+  });
+</script>

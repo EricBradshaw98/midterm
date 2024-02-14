@@ -22,7 +22,6 @@ $('.addToCartForm').submit(function(e) {
   });
 });
 
-
 //removefromcart
 
 $('.removeItemAjax').submit(function(e) {
@@ -42,7 +41,6 @@ $('.removeItemAjax').submit(function(e) {
     }
 });
 });
-
 
 //quantity add remove
 
@@ -76,7 +74,6 @@ $('.update-form').submit(function(e) {
   });
 });
 
-
 //adjust quantity
 
 //plus minus
@@ -97,35 +94,3 @@ $('quantity-btn').on('click', function() {
   }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

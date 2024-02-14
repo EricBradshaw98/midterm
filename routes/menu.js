@@ -1,14 +1,10 @@
 const express = require('express');
 const router  = express.Router();
-const {getAllMenuItems} = require("../db/queries/menu");
 const userQueries = require('../db/queries/users')
 
-
-//CREATE (POST TO CREATE MENU ITEM)
-//READ ALL
 router.get("/", (req, res) => {
 
-  const userID = req.cookies.customer_id || 1;
+  const userID = req.cookies.user_id || 1;
 
   userQueries.queryCurrentOrder(userID)
   .then((data) => {
@@ -28,12 +24,5 @@ router.get("/", (req, res) => {
   });
 
 });
-
-//CREATE
-//READ ALL
-//READ ONE
-//UPDATE
-//DELETE
-
 
 module.exports = router;

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   let templateVars = {};
   const userID = req.cookies.user_id || 1;
 //all orders for a given ID
-  userQueries.cart(userID)
+  userQueries.getCart(userID)
   .then((data) => {
     const orderID = data.rows[0].id;
     templateVars.orderID = orderID;

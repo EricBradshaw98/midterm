@@ -30,11 +30,12 @@
       <!--one article per item-->
       <% for (let item of menuItems) { %>
         <article class="menuItem">
-          <div class="menu-description">
-            <!-- Use the menu name and description from the database -->
-            <h5>Menu Item</h5>
-            <p>Menu descrition</p>
+          <div id="menuItemDisplay">
             <span>Image</span>
+            <div id ="foodInformation">
+              <p class="foodNameAndPrice"><%= item.name %> • $<%= (item.price/100).toFixed(2) %></p>
+              <p class="foodItemDescription"><%= item.description %></p>
+            </div>
           </div>
           <form class="addToCartForm" action="/cart/<%= orderID %>" method="POST">
             <input type="number" id="quantity" class="quantityInput" name="quantity" step="1" min="1"/>

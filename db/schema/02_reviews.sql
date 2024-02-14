@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS reviews CASCADE;
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY NOT NULL,
-  review TEXT NOT NULL
-
+  review TEXT NOT NULL,
+  customer_id INTEGER REFERENCES customers(id)
 );

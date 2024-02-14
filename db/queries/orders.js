@@ -1,12 +1,11 @@
 const db = require('../connection');
 
-const getAllOrderItems = function (limit = 20) {
+const getAllOrderItems = function (limit = 10) {
   const queryParams = [];
   let queryString = `
     SELECT *
     FROM orders
     JOIN ordered_items ON orders.id = ordered_items.order_id
-    
     LIMIT $1;
   `;
 

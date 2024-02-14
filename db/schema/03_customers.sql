@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS customers CASCADE;
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255),
-  phone VARCHAR(255)
+  phone VARCHAR(255),
+  type VARCHAR (20) DEFAULT 'customer'
 
 );

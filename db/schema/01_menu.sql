@@ -7,5 +7,6 @@ CREATE TABLE menu (
   prep_time INT NOT NULL,
   price REAL NOT NULL,
   active BOOLEAN NOT NULL,
-  type TEXT NOT NULL
+  type TEXT NOT NULL,
+  photo_url VARCHAR(255)
 );

@@ -20,19 +20,7 @@
 <!--body is where we will keep all the page content-->
 <body>
   <!--header is where we will keep the restaurant name + menu filters-->
-  <header>
-    <!--Restaurant logo + name-->
-    <div class="restaurant logo">
-        <img src="/images/profile-hex.png">
-        <h2>Lighthouse Restaurant</h2>
-    </div>
-    <!-- line to seperate next div-->
-    <br>
-    <!--this is where we will store the filters, more divs may be required here base on type count-->
-    <div class="filters">
-        <h2>Filter / search </h2>
-    </div>
-  </header>
+  <%- include('partials/_header') %>
 
   <!-- Page-specific (main) content here -->
   <main>
@@ -45,7 +33,7 @@
             <!-- Use the menu image URL from the database -->
             <img src="<%= menu.image_url %>">
             <!-- Assuming you want to display the price as a button, replace ORDER-$$$ with the actual price -->
-            <button class="add-to-order" type="submit">ORDER-$<%= menu.price %></button>
+            <button class="add-to-order" onclick = "addToOrder(<%= JSON.stringify(menu) %>)">ORDER-$<%= menu.price %></button>
           </div>
           <div class="menu-description">
             <!-- Use the menu name and description from the database -->
@@ -54,10 +42,6 @@
           </div>
         </article>
       <% }); %>
-
-
-
-
 
     </section>
     <!--cart and checkout display-->
@@ -72,7 +56,7 @@
           <li>1X Pizza - $25 </li>
           <li>3X Ginger Ale - $2</li>
         </ol>
-        <h4>Order Total = $$$</h4>
+        <h4 class="cart-total"></h4>
         <h6>Cost is per item</h6>
       </div>
       <section class="place-order">
@@ -93,24 +77,26 @@
     </div>
 
     <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
-    <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
-
+    <form class = "leave_review" method="post" action = "/reviews/submit">
+      <textarea name = "review-text" class = "review-text" id ="review-text" placeholder="Leave a review!"></textarea>
+      <button type="submit" id = "review-submit">Submit</button>
+    </form>
+    <div id="error-container" class="error-container" style="display: none;"></div>
   </main>
-  <!--section for customer reviews, cannot post your own-->
+  <!--section for customer reviews-->
   <footer>
     <!--many reviews can be posted-->
-   <article class="reviews">
+    <article class="reviews">
       <!--rating in stars will be displayed-->
       <div class="Rating">
         <img src="/images/profile-hex.png">
       </div>
       <!--description will be contained the right side-->
       <div class="review-description">
-        <h5></h5>
+        <h5>Very all dente</h5>
         <p>I ordered the Fettucini Alfredo. The sauce was great but the Fettucini could have been boiled for longer. It was hard to roll it onto my spoon. The crunch was not great either</p>
       </div>
     </article>
-
   </footer>
 </body>
 

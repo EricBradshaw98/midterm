@@ -17,26 +17,25 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <!--body is where we will keep all the page content-->
 <body>
   <!--header is where we will keep the restaurant name + menu filters-->
   <%- include('partials/_header') %>
-
-  <!-- Page-specific (main) content here -->
   <main>
     <!--This section is where the menu items will be displayed-->
     <section class="menu">
       <!--one article per item-->
       <% menu_items.forEach(menu => { %>
         <article class="menu-item">
-          <div class="menu-picture">
-            <!-- Use the menu image URL from the database -->
-            <img src="<%= menu.image_url %>">
-            <!-- Assuming you want to display the price as a button, replace ORDER-$$$ with the actual price -->
-            <button class="add-to-order" onclick = "addToOrder(<%= JSON.stringify(menu) %>)">ORDER-$<%= menu.price %></button>
-          </div>
+          <form class="addToCartForm" action="/cart/<%= orderID %>" method="POST">
+            <input type="number" id="quantity" class="quantityInput" name="quantity" step="1" min="1"/>
+            <input type="hidden" name="menuItemId" value="<%= item.id %>"/>
+            <input type="hidden" name="orderId" value="<%= orderId %>"/>
+            <button type="button" class="addToCartButton">ADD TO CART</button>
+          </form>
           <div class="menu-description">
             <!-- Use the menu name and description from the database -->
             <h5><%= menu.name %></h5>
@@ -44,39 +43,7 @@
           </div>
         </article>
       <% }); %>
-
     </section>
-    <!--cart and checkout display-->
-    <div class="cart">
-
-      <h2>CART</h2>
-      <div class="carted-items">
-        <ol>
-          <!--Order item from first added to last?-->
-          <li>(quantity)(item)(price)</li>
-          <li>2X Fettucini alfredo - $17</li>
-          <li>1X Pizza - $25 </li>
-          <li>3X Ginger Ale - $2</li>
-        </ol>
-        <h4 class="cart-total"></h4>
-        <h6>Cost is per item</h6>
-      </div>
-      <section class="place-order">
-        <h2></h2>
-        <!--add error message, we can set this to pop up based on if statements-->
-        <div class="error-message"></div>
-        <!--add id's for targetting actions w/ jQuery-->
-        <form class="customer-details" id="customer-details">
-          <textarea class="customer-name" name="text" id="customer-name"
-            placeholder="Name is required for order"></textarea>
-          <textarea class="customer-phone-number" name="text" id="customer-phone-number"
-            placeholder="Phone number"></textarea>
-          <textarea class="customer-comment" name="text" id="customer-comment"
-            placeholder="Can you make sure my pop arrives cold?"></textarea>
-          <button class="checkout" type="submit">Checkout</button>
-        </form>
-      </section>
-    </div>
 
     <!--form will need to be added in cart with placeholder text to indicate name, phone number for pickup-->
     <form class = "leave_review" method="post" action = "/reviews/submit">

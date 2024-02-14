@@ -10,6 +10,15 @@ const getUsers = () => {
 //getAllMenuItems other query
 //getorders other query
 //getsubtotal other query
+const getSubtotal = (orderID) => {
+  const queryString = `
+  SELECT SUM(price * ordered_items.quantity)/100 as subtotal
+  FROM menu
+  JOIN ordered_items on (menu.id = ordered_items.menu_item_id)
+  JOIN orders on (ordered_items.order_id = orders.id)
+  WHERE orders.id = $1
+  GROUP BY orders.id, price, ordered_items.quantity;`
+}
 
 //clear cart
 const clearCart = (orderID) => {
@@ -28,7 +37,24 @@ const clearCart = (orderID) => {
   })
 }
 
-//order history
+//order history all
+const getOrders = (orderID) => {
+  const queryString = `
+  SELECT menu.name, menu.price as price, photo_url, description, ordered_items.quantity, ordered_items.id as ordered_itemsID, orders.order_placed
+  FROM menu
+  JOIN ordered_items on (menu.id = ordered_items.menu_item_id)
+  JOIN orders on (ordered_items.order_id = orders.id)
+  WHERE orders.id = $1;
+  `;
+  return db.query(queryString, [orderID])
+  .then((data) => {
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+}
+
 
 
 //CHeckout order
@@ -111,11 +137,11 @@ const cart = (userID) => {
   const queryOrder = `
   SELECT *
   FROM orders
-  WHERE user_id = $1 AND order_placed IS NULL`
+  WHERE user_id = $1 AND order_placed IS NULL`;
   const queryNewOrder = `
   INSERT INTO orders (user_id) VALUES ($1)
   RETURNING *
-  `
+  `;
   return db.query(queryOrder, [userID])
   .then((data) => {
     if (!data.row[0]) {
@@ -279,4 +305,4 @@ const queryMenuItems = () => {
 
 
 
-module.exports = { getUsers };
+module.exports = { getUsers, queryMenuItems, createNewOrder, currentOrder,orderContentsQuery, cart, userPhone, updateOrderQuery, adminOrders, updateQuantity, deleteMenuItem, queryAllOrders, updateCart, clearCart, getPhoneNum, addCart, cartSearch, checkoutOrder,getOrders };

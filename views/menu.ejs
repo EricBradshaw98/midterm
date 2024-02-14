@@ -28,7 +28,7 @@
     <!--This section is where the menu items will be displayed-->
     <section class="menu">
       <!--one article per item-->
-      <% for (let item of foodItems) { %>
+      <% for (let item of menuItems) { %>
         <article class="menu-item">
           <form class="addToCartForm" action="/cart/<%= orderID %>" method="POST">
             <input type="number" id="quantity" class="quantityInput" name="quantity" step="1" min="1"/>

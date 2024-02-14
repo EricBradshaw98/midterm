@@ -5,7 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-
+const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -26,6 +26,7 @@ app.use(
 );
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -57,12 +58,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
- // for parsing application/json
-
-// Route for handling POST request
-

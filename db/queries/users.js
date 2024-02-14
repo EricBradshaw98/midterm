@@ -287,8 +287,8 @@ const orderItemContentsQuery = (orderID) => {
 const queryCurrentOrder = (userID) => {
   const queryCurrent = `SELECT *
   FROM orders
-  WHERE user_id = $1 AND order_placed IS NOT NULL AND order_ready IS NULL`;
-
+  WHERE user_id = $1 AND order_placed IS NOT NULL AND order_ready IS NULL
+  `;
   return db.query(queryCurrent, [userID])
   .then((data) => {
     return data.rows;
@@ -300,7 +300,6 @@ const createNewOrderQuery = (userID) => {
   const queryCreate = `INSERT INTO orders (user_id) VALUES ($1)
   RETURNING *;
   `;
-
   return db.query(queryCreate, [userID])
   .then((data) => {
     return data.rows;
@@ -311,12 +310,30 @@ const queryAllFoodItems = () => {
   const querymenu = `SELECT id, name, description, price, photo_url
   FROM menu;
   `;
-
   return db.query(querymenu)
+};
 
-  };
-
-
-
-module.exports = { queryAllFoodItems, createNewOrderQuery, queryCurrentOrder, orderItemContentsQuery, getUserPhone, updateOrdersQuery, getOrdersAdmin, queryAllOrders, updateCart, addToCart, searchCart, getCart, getOwnerPhone, getSubtotal, updateQuantity, removeFoodItem, submitOrder, cancelCartOrder, getOrders, getAllFoodItems, getUsers };
+module.exports = { 
+  queryAllFoodItems, 
+  createNewOrderQuery, 
+  queryCurrentOrder, 
+  orderItemContentsQuery, 
+  getUserPhone, 
+  updateOrdersQuery, 
+  getOrdersAdmin, 
+  queryAllOrders, 
+  updateCart, 
+  addToCart, 
+  searchCart, 
+  getCart, 
+  getOwnerPhone, 
+  getSubtotal, 
+  updateQuantity, 
+  removeFoodItem, 
+  submitOrder, 
+  cancelCartOrder, 
+  getOrders, 
+  getAllFoodItems, 
+  getUsers 
+};
 //need get order history

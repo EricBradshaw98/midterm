@@ -18,4 +18,6 @@ const orderSubtotal = function (orderId) {
   });
 }
 
+
 module.exports = {orderSubtotal}
+

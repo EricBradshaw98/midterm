@@ -236,14 +236,21 @@ const queryAllOrders = (userID) => {
 const getOrdersAdmin = () => {
   const queryString = `
   SELECT
-  orders.id, orders.order_placed, orders.active, orders.order_ready,
-  SUM(ordered_items.quantity * menu_items.price) AS total_price
-  FROM orders
+  orders.id,
+  orders.order_placed,
+  orders.active,
+  orders.order_ready,
+  SUM(ordered_items.quantity * menu.price) AS total_price
+FROM
+  orders
   JOIN ordered_items ON orders.id = ordered_items.order_id
-  JOIN menu ON menu_items.id = ordered_items.menu_item_id
-  WHERE orders.active = 'true'
-  GROUP BY orders.id
-  ORDER BY orders.active, orders.order_placed;
+  JOIN menu ON menu.id = ordered_items.menu_item_id
+WHERE
+  orders.active = 'true'
+GROUP BY
+  orders.id, orders.order_placed, orders.active, orders.order_ready
+ORDER BY
+  orders.active, orders.order_placed;
   `
 
   return db.query(queryString)

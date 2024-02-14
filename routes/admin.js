@@ -52,7 +52,7 @@ const userQueries = require('../db/queries/users');
 // });
 
 // ADMIN ORDERS PAGE
-router.get('/admin', (req, res) => {
+router.get('/', (req, res) => {
 
   userQueries.getOrdersAdmin()
     .then(orderData => {
@@ -82,7 +82,7 @@ router.get('/admin', (req, res) => {
     });
 });
 
-// router.post('/admin/time', (req, res) => {
+// router.post('/time', (req, res) => {
 
 //   const orderID = req.body.orderID;
 //   const timeToComplete = req.body.timeToComplete;

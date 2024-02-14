@@ -1,52 +1,131 @@
+$(document).ready(function() {
 
-const cart = [];
+//addtocart
 
-const addToOrder = function (menu) {
-  cart.push(menu);
-  console.log('cart', cart)
-  renderCart();
-}
+$('.addToCartButton').on('click', function() {
+  $(this).closest('.addToCartForm').trigger("submit");
+  $(this).closest('.addToCartForm')[0].reset();
+});
 
-const renderCart = function () {
-  let total = 0;
- const cartList = $('.carted-items ol');
-  cartList.empty()
-  for(const item of cart) {
-    cartList.append(`<li>${item.name} - $${item.price}</li>`);
-    total += (item.price);
+$('.addToCartForm').submit(function(e) {
+  e.preventDefault();
+  const newURL = $(this).attr("action");
+  const values = $(this).serialize();
 
-  }
-  $('.cart-total').text(`Total: $${total}`);
-}
-
-$("document").ready(function() {
-  console.log('document ready starts')
-  renderCart();
-
-  // down arrow button handler to show/hide new tweet on click
-  $("#review-submit").on("click", function(event) {
-    event.preventDefault();
-    const reviewContent = $('.leave_review #review-text').val()
-    console.log('reviewContent', reviewContent)
-
-    if (!reviewContent.trim()) {
-      showError('🛑 ⚠️ Review content cannot be empty! ⚠️ 🛑');
-      return;
+  $.ajax({
+    type: "POST",
+    url: newURL,
+    data: values,
+    success: (res) => {
+      console.log("success");
     }
-
-    $.ajax({
-      url: "http://localhost:8080/reviews/submit",
-      context: document.body,
-      data: {'reviewContent': reviewContent},
-      method: "POST",
-      success: function() {
-        console.log('success')
-      },
-      error: function() {
-        console.log('Problem saving review');
-      }
-    });
-    console.log('document ready done')
   });
 });
+
+
+//removefromcart
+
+$('.removeItemAjax').submit(function(e) {
+  e.preventDefault();
+  const newURL = $(this).attr("action");
+  const values = $(this).serialize();
+
+
+  $.ajax({
+    type: "POST",
+    url: newURL,
+    data: values,
+    success: (jsonData) => {
+      const currentSubtotal = jsonData.subtotal;
+      const newHTML = `<p>SUBTOTAL : $${currentSubtotal}</p>`;
+      $("subtotalTarget").empty().append(newHTML);
+    }
+});
+});
+
+
+//quantity add remove
+
+$('.quantityAjax').on("keyup keydown change", function() {
+  $(".update-form").trigger("submit");
+});
+
+
+$('.remove-btn').on('click', function() {
+  $(this).closest(".removeItemAjax").trigger("submit");
+  const $menuItem = $(this).closest('foodItem');
+  $menuItem.hide();
+});
+
+//update
+$('.update-form').submit(function(e) {
+  e.preventDefault();
+  const newURL = $(this).attr("action");
+  const values = $(this).serialize();
+
+
+  $.ajax({
+    type: "POST",
+    url: newURL,
+    data: values,
+    success: (jsonData) => {
+      const currentSubtotal = jsonData.subtotal;
+      const newHTML = `<p>SUBTOTAL : $${currentSubtotal}</p>`;
+      $("subtotalTarget").empty().append(newHTML);
+    }
+  });
+});
+
+
+//adjust quantity
+
+//plus minus
+$('quantity-btn').on('click', function() {
+  if ($(this).hasClass('fa-plus')) {
+    const add = parseInt($(this).parent().find('quantityAjax').val()) +1;
+    $(this).parent().find('quantityAjax').val(add).trigger('change');
+  }
+
+  if ($(this).hasClass('fa-minus')) {
+    const remove = parseInt($(this).parent().find('quantityAjax').val()) -1;
+
+    if (remove === 0) {
+      remove = 1;
+    }
+
+    $(this).parent().find('quantityAjax').val(remove).trigger('change');
+  }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,3 +1,4 @@
+
 const cart = [];
 
 const addToOrder = function (menu) {
@@ -7,16 +8,23 @@ const addToOrder = function (menu) {
 }
 
 const renderCart = function () {
-  $('.carted-items ol').empty()
+
+  let total = 0;
+ const cartList = $('.carted-items ol');
+  cartList.empty()
   for(const item of cart) {
-    $('.carted-items ol').append(`<li>${item.name} - $${item.price}</li>`)
+    cartList.append(`<li>${item.name} - $${item.price}</li>`);
+    total += (item.price);
+
   }
+  $('.cart-total').text(`Total: $${total}`);
+
 }
 
 $("document").ready(function() {
   console.log('document ready starts')
   renderCart();
-  
+
   // down arrow button handler to show/hide new tweet on click
   $("#review-submit").on("click", function(event) {
     event.preventDefault();
@@ -27,7 +35,7 @@ $("document").ready(function() {
       showError('🛑 ⚠️ Review content cannot be empty! ⚠️ 🛑');
       return;
     }
-  
+
     $.ajax({
       url: "http://localhost:8080/reviews/submit",
       context: document.body,
@@ -42,4 +50,4 @@ $("document").ready(function() {
     });
     console.log('document ready done')
   });
-});
+

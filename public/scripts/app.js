@@ -8,6 +8,7 @@ const addToOrder = function (menu) {
 }
 
 const renderCart = function () {
+
   let total = 0;
  const cartList = $('.carted-items ol');
   cartList.empty()
@@ -17,6 +18,7 @@ const renderCart = function () {
 
   }
   $('.cart-total').text(`Total: $${total}`);
+
 }
 
 $("document").ready(function() {
@@ -48,4 +50,4 @@ $("document").ready(function() {
     });
     console.log('document ready done')
   });
-});
+

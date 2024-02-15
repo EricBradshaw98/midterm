@@ -10,8 +10,8 @@ const { getAllFoodItems } = require("../db/queries/menu");
 
 router.get('/', (req, res) => {
   let templateVars = {};
-  const userID = req.cookies.user_id || 1;
-//all orders for a given ID
+  const userID = req.cookies.customer_id || 1;
+
   userQueries.getCart(userID)
   .then((data) => {
     const orderID = data.rows[0].id;

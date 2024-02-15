@@ -25,13 +25,23 @@ const getAllFoodItems = () => {
 //getsubtotal other query
 const getSubtotal = (orderID) => {
   const queryString = `
-  SELECT SUM(price * ordered_items.quantity)/100 as subtotal
+  SELECT SUM(price * ordered_items.quantity) / 100 AS subtotal
   FROM menu
-  JOIN ordered_items on (menu.id = ordered_items.menu_item_id)
-  JOIN orders on (ordered_items.order_id = orders.id)
+  JOIN ordered_items ON menu.id = ordered_items.menu_item_id
+  JOIN orders ON ordered_items.order_id = orders.id
   WHERE orders.id = $1
-  GROUP BY orders.id, price, ordered_items.quantity;`
-}
+  GROUP BY orders.id;
+  `;
+
+  return db.query(queryString, [orderID])
+    .then((data) => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 
 //clear cart
 const cancelCartOrder = (orderID) => {
@@ -53,7 +63,7 @@ const cancelCartOrder = (orderID) => {
 //order history all check
 const getOrders = (orderID) => {
   const queryString = `
-  SELECT menu.name, menu.price as price, photo_url, description, ordered_items.quantity, ordered_items.id as ordered_itemsID, orders.order_placed
+  SELECT menu.name, menu.price as price, menu.photo_url, menu.description, ordered_items.quantity, ordered_items.id as ordered_itemsID, orders.order_placed
   FROM menu
   JOIN ordered_items on (menu.id = ordered_items.menu_item_id)
   JOIN orders on (ordered_items.order_id = orders.id)
@@ -148,21 +158,22 @@ const getOwnerPhone = () => {
 //get the ordered items in cart
 const getCart = (userID) => {
   const queryOrder = `
-  SELECT *
-  FROM orders
-  WHERE user_id = $1 AND order_placed IS NULL`;
+    SELECT *
+    FROM orders
+    WHERE user_id = $1 AND order_placed IS NULL`;
   const queryNewOrder = `
-  INSERT INTO orders (user_id) VALUES ($1)
-  RETURNING *
-  `;
+    INSERT INTO orders (user_id)
+    VALUES ($1)
+    RETURNING *`;
+
   return db.query(queryOrder, [userID])
-  .then((data) => {
-    if (!data.row[0]) {
-      return db.query(queryNewOrder);
-    }
-    //if order exists
-    return data;
-  });
+    .then((data) => {
+      if (!data.rows[0]) {
+        return db.query(queryNewOrder, [userID]);
+      }
+
+      return data;
+    });
 
 
 }
@@ -320,27 +331,27 @@ const queryAllFoodItems = () => {
   return db.query(querymenu)
 };
 
-module.exports = { 
-  queryAllFoodItems, 
-  createNewOrderQuery, 
-  queryCurrentOrder, 
-  orderItemContentsQuery, 
-  getUserPhone, 
-  updateOrdersQuery, 
-  getOrdersAdmin, 
-  queryAllOrders, 
-  updateCart, 
-  addToCart, 
-  searchCart, 
-  getCart, 
-  getOwnerPhone, 
-  getSubtotal, 
-  updateQuantity, 
-  removeFoodItem, 
-  submitOrder, 
-  cancelCartOrder, 
-  getOrders, 
-  getAllFoodItems, 
-  getUsers 
+module.exports = {
+  queryAllFoodItems,
+  createNewOrderQuery,
+  queryCurrentOrder,
+  orderItemContentsQuery,
+  getUserPhone,
+  updateOrdersQuery,
+  getOrdersAdmin,
+  queryAllOrders,
+  updateCart,
+  addToCart,
+  searchCart,
+  getCart,
+  getOwnerPhone,
+  getSubtotal,
+  updateQuantity,
+  removeFoodItem,
+  submitOrder,
+  cancelCartOrder,
+  getOrders,
+  getAllFoodItems,
+  getUsers
 };
 //need get order history

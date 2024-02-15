@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 const getUsers = () => {
-  return db.query('SELECT * FROM customers;')
+  return db.query('SELECT * FROM users;')
     .then(data => {
       return data.rows;
     });
@@ -142,7 +142,7 @@ const updateQuantity = (newQuantity, orderContentID) => {
 const getOwnerPhone = () => {
   const queryString = `
   SELECT phone
-  FROM customers
+  FROM users
   WHERE id = 1;
   `
   return db.query(queryString)
@@ -280,7 +280,7 @@ const updateOrdersQuery = (orderID) => {
 }
 
 const getUserPhone = (orderID) => {
-  const userquery = `SELECT customers.phone FROM customer JOIN orders ON orders.customer_id = customers.id WHERE orders.id = $1`;
+  const userquery = `SELECT users.phone FROM customer JOIN orders ON orders.customer_id = users.id WHERE orders.id = $1`;
 
   return db.query(queryString,[orderID])
   .then((data) => {

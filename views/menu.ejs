@@ -35,6 +35,7 @@
           <div id="menuItemDisplay">
             <span>Image</span>
             <div id ="foodInformation">
+              <span><img src = "<%= item.photo_url %>" </span>
               <p class="foodNameAndPrice"><%= item.name %> • $<%= (item.price/100).toFixed(2) %></p>
               <p class="foodItemDescription"><%= item.description %></p>
             </div>

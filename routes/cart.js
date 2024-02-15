@@ -40,4 +40,7 @@ router.get('/', (req, res) => {
   })
 })
 
+router.post('/:id', (req, res) => {
+  console.log(req.params.id)
+});
 module.exports = router;

@@ -19,10 +19,11 @@ router.get("/", (req, res) => {
 
 
 router.post("/submit", async (req, res) => {
-  const itemId  = req.body.reviewContent;
-  console.log(req.body, itemId)
+  const itemID  = req.body.reviewContent;
+  console.log("itemID", itemID)
+  console.log(req.body, itemID)
   try{    
-    await db.query('INSERT INTO reviews (review, customer_id) VALUES ($1, 3)', [itemId]);
+    await db.query('INSERT INTO reviews (review, user_id) VALUES ($1, 3)', [itemID]);
     res.status(200).json({ message: 'Item added'});
   } catch (error) {
     console.error('error:', error);

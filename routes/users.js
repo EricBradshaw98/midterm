@@ -16,7 +16,7 @@ router.get('/login/:id', (req, res) => {
   res.cookie('user_id', req.params.id);
 
   // send the user somewhere
-  res.redirect('/');
+  res.redirect('/menu');
 });
 
 module.exports = router;

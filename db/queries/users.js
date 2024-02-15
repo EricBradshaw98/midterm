@@ -280,7 +280,7 @@ const updateOrdersQuery = (orderID) => {
 }
 
 const getUserPhone = (orderID) => {
-  const userquery = `SELECT users.phone FROM customer JOIN orders ON orders.customer_id = users.id WHERE orders.id = $1`;
+  const userquery = `SELECT users.phone FROM user JOIN orders ON orders.user_id = users.id WHERE orders.id = $1`;
 
   return db.query(queryString,[orderID])
   .then((data) => {

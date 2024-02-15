@@ -1,0 +1,82 @@
+main {
+  padding-top: 60px;
+}
+
+.menuItemList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.menuItem {
+  border: 1px solid #ccc;
+  padding: 15px;
+  position: relative;
+}
+
+#menuDisplay {
+  display: flex;
+  align-items: center;
+}
+
+#menuDisplay img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.menuInformation {
+  flex-grow: 1;
+}
+
+.menuNameAndPrice {
+  margin: 0;
+}
+
+.menuItemDescription {
+  margin-top: 5px;
+  color: #666;
+}
+
+.editCart {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.editCart .quantity-btn {
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.editCart .remove-btn {
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.confirmationBar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#subtotalTarget {
+  margin: 0;
+}
+
+button {
+  background-color: #2B4622;
+  color: #D7BF3A;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.buttonNegative {
+  background-color: #ff6347;
+}

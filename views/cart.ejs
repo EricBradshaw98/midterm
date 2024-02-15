@@ -25,31 +25,142 @@
   <main>
     <div class="menuItemList">
       <!-- MENU ITEMS LIST -->
-      <% for (let item of menuItems) { %>
-        <% if (!item.placed_at) { %>
-          <div class="menuItem">
-            <div id="menuDisplay">
-              <img src="<%= item.thumbnail_photo_url%>"/>
-              <div id ="menuInformation">
-                <p class="menuNameAndPrice"><%= item.name %> • $<%= (item.price/100).toFixed(2) %></p>
-                <p class="menuItemDescription"><%= item.description %></p>
-              </div>
-            </div>
-            <div class="editCart">
-              <form class="update-form" action="/api/users/updateQuantity/<%= orderID %>" method="POST">
-                <i class="quantity-btn fa-solid fa-minus"></i>
-                <input type="number" class="quantityAjax" id="quantity" name="quantity" value="<%= item.quantity %>" step="1" min="1"/>
-                <i class="quantity-btn fa-solid fa-plus"></i>
-                <input type="hidden" name="order_contents_id" value="<%= item.order_contentsid %>"/>
-              </form>
-              <form class="removeItemAjax" action="/api/users/removemenuItem/<%= orderID%>" method="POST">
-                <input type="hidden" name="menuItemName" value="<%= item.name%>">
-                <button class="remove-btn" type="button">REMOVE</button>
-              </form>
-            </div>
-          </div>
-        <% } %>
-      <% } %>
+      <!-- Sample Menu Item 1 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Burger Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 1 • $9.99</p>
+      <p class="menuItemDescription">Delicious sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/1" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="2" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="1" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/1" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 1">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
+
+<!-- Sample Menu Item 2 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Pizza Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 2 • $12.99</p>
+      <p class="menuItemDescription">Tasty sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/2" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="1" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="2" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/2" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 2">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
+<!-- Sample Menu Item 1 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Burger Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 1 • $9.99</p>
+      <p class="menuItemDescription">Delicious sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/1" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="2" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="1" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/1" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 1">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
+
+<!-- Sample Menu Item 2 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Pizza Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 2 • $12.99</p>
+      <p class="menuItemDescription">Tasty sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/2" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="1" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="2" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/2" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 2">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
+
+<!-- Sample Menu Item 1 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Burger Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 1 • $9.99</p>
+      <p class="menuItemDescription">Delicious sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/1" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="2" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="1" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/1" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 1">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
+
+<!-- Sample Menu Item 2 -->
+<div class="menuItem">
+  <div id="menuDisplay">
+    <img src="https://via.placeholder.com/100" alt="Pizza Image">
+    <div id="menuInformation">
+      <p class="menuNameAndPrice">Sample Item 2 • $12.99</p>
+      <p class="menuItemDescription">Tasty sample item description.</p>
+    </div>
+  </div>
+  <div class="editCart">
+    <form class="update-form" action="/api/users/updateQuantity/2" method="POST">
+      <i class="quantity-btn fa-solid fa-minus"></i>
+      <input type="number" class="quantityAjax" id="quantity" name="quantity" value="1" step="1" min="1" />
+      <i class="quantity-btn fa-solid fa-plus"></i>
+      <input type="hidden" name="order_contents_id" value="2" />
+    </form>
+    <form class="removeItemAjax" action="/api/users/removemenuItem/2" method="POST">
+      <input type="hidden" name="menuItemName" value="Sample Item 2">
+      <button class="remove-btn" type="button">REMOVE</button>
+    </form>
+  </div>
+</div>
       <!-- END OF menu ITEMS LIST -->
     </div>
       <div class="confirmationBar">

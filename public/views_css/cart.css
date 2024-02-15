@@ -1,5 +1,8 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
   background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
   margin: 0;
   padding: 0;
@@ -9,83 +12,140 @@ body {
 main {
   padding: 60px;
   padding-top: 80px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .menuItemList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .menuItem {
-  border: 1px solid #ccc;
+  width: calc(55% - 20px);
+  box-sizing: border-box;
+  background-color: #f5d29d;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  border: 1px;
   padding: 15px;
-  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.menuItem:hover {
+  background-color: #c99b57;
 }
 
 #menuDisplay {
   display: flex;
-  align-items: center;
 }
 
 #menuDisplay img {
-  max-width: 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid #2B4622;
   margin-right: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#menuDisplay span {
+  width: 25%;
+  margin-right: 15px;
+  border-radius: 5px;
 }
 
 .menuInformation {
-  flex-grow: 1;
+  width: 75%;
 }
 
 .menuNameAndPrice {
+  font-size: 1.2em;
   margin: 0;
 }
 
 .menuItemDescription {
   margin-top: 5px;
-  color: #666;
 }
 
 .editCart {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
+  margin-top: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
 }
 
-.editCart .quantity-btn {
-  font-size: 1.2em;
+.update-form i {
   cursor: pointer;
-  margin-right: 5px;
+  font-size: 1.5em;
+  margin: 0 5px;
 }
 
-.editCart .remove-btn {
-  background-color: #ff6347;
+.quantityAjax {
+  width: 50px;
+  padding: 5px;
+}
+
+.remove-btn {
+  background-color: #af1c1c;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #721010;
 }
 
 .confirmationBar {
+  background-color: #f5d29d;
+  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+  color: #2B4622;
+  padding: 10px;
+  position: fixed;
+  width: 90%;
+  bottom: 0;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  flex-direction: column;
 }
 
 #subtotalTarget {
-  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  
 }
 
-button {
+.confirmationBar button {
   background-color: #2B4622;
   color: #D7BF3A;
   border: none;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.confirmationBar button:hover {
+  background-color: #af1c1c;
 }
 
 .buttonNegative {
-  background-color: #ff6347;
+  background-color: #af1c1c;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.buttonNegative:hover {
+  background-color: #721010;
 }

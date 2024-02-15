@@ -19,18 +19,34 @@ nav {
   padding-inline: 2em;
 }
 
+.header_left {
+  width: 300px;
+}
+
 .header_left a {
   text-decoration: none;
   color: #D7BF3A;
+  margin-right: auto;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .header_title {
   font-size: 2.5em;
+  text-align: center;
 }
 
 .header_right {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  width: 300px;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .fa-solid {
@@ -40,4 +56,14 @@ nav {
 
 .fa-solid:hover {
   transform: scale(1.1);
+}
+
+.form-inline {
+  display: flex;
+  flex-direction: row;
+  color: rgb(49, 11, 11);
+}
+
+button {
+  background-color: #D7BF3A;
 }

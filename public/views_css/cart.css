@@ -1,5 +1,14 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
+  margin: 0;
+  padding: 0;
+  background-color: #2B4622;
+}
+
 main {
-  padding-top: 60px;
+  padding: 60px;
+  padding-top: 80px;
 }
 
 .menuItemList {
